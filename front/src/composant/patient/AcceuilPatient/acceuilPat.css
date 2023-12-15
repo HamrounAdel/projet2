@@ -1,0 +1,32 @@
+.log{
+    background-image: url("https://th.bing.com/th/id/OIP.O-VunXNUfZJHUF-U6ILNjAHaEj?w=270&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7");
+    background-repeat: no-repeat;
+  background-size: 100%;
+    margin:70px;
+    height: 350px;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+    text-align:  center;
+
+  }
+  h1{
+    color: black;
+  }
+  .log input{
+    width: 250px;
+    height: 30px;
+  }
+  .log select{
+    width: 250px;
+    height: 30px;
+  }
+  .log button{
+    width: 150px;
+  }
+
+  .grid-container {
+    display: grid;
+    gap: 24px;
+   
+    grid-template-columns: repeat(3, 1fr)}

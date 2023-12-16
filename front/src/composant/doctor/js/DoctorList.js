@@ -1,40 +1,42 @@
  import React,{ useState,useEffect }  from 'react'
-import './doctor.css'
+import '../css/doctor.css'
 import {useSelector,useDispatch}from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import {getAllUser} from '../../../api/apiUser'
 import Doctor from './Doctor'
 import Navigation from '../../navbar/Navigation'
 import {setUser} from '../../../redux/userSlice'
+import { getAllDoctor } from '../../../api/apiDoctor'
 
 function DoctorList() {
    const auth = useSelector((state) => state.User)
   console.log('redux users',auth)
-  const [userList, setUserList] = useState([]);
+  const doctor = useSelector((state) => state.Doctor)
+  console.log('redux users',doctor)
+  const [doctorList, setDoctorList] = useState([]);
   const navigate = useNavigate()
   const dispatch = useDispatch()
 
-     const getUs = async () => {
+     const getDoc = async () => {
       try{
-      const data = await getAllUser();
+      const data = await getAllDoctor();
         //  console.log('users', data);
-         console.log('users from getUs', data.users);
-         setUserList(data.users);
+         console.log('doctors from getdoc', data.doctors);
+         setDoctorList(data.doctors);
           // dispatch(setUser(data.users));
       }catch(error){
         console.error('Error fetching users:', error);
       }
        } 
     useEffect(() => {
-    getUs();
+    getDoc();
   }, []);
-  console.log("this is users list :", userList);
+  console.log("this is doctors list :", doctorList);
  
   const logout=()=>{
     localStorage.removeItem('token')
     navigate('/login')
   }
-    const doctors = Object.values( userList).filter((el)=>el.role==='Doctor')
+    const doctors = Object.values( doctorList)
    console.log('doctors filter',doctors)
  
   return (

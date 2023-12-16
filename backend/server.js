@@ -16,7 +16,7 @@ connectdb();
 
 app.use('/auth',userRoutes);
 app.use('/RDV',rdvRoutes);
-app.use('/doctor',doctorRoute)
+app.use('/doctor',doctorRoute);
 
 
 

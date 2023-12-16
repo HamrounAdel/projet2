@@ -1,5 +1,5 @@
 import React ,{useState,useEffect}from 'react'
-import './profilePatient.css'
+import '../css/profilePatient.css'
 import {useSelector,useDispatch}from 'react-redux'
 import { useNavigate , useParams} from 'react-router-dom'
 import {putUser} from '../../../api/apiUser'

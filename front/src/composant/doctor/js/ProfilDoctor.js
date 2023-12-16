@@ -1,13 +1,14 @@
 import React ,{useState,useEffect}from 'react'
-import './profilDoctor.css'
+import '../css/profilDoctor.css'
 import {useSelector,useDispatch}from 'react-redux'
 import { useNavigate , useParams} from 'react-router-dom'
-import {putUser} from '../../../api/apiUser'
 import Navigation from '../../navbar/Navigation'
-import { setUser } from '../../../redux/userSlice'
+import { putDoctor } from '../../../api/apiDoctor'
 function ProfilDoctor() {
   const auth = useSelector(state => state.User)
   console.log('dgfjhk',auth)
+  const doct = useSelector(state => state.Doctor)
+  console.log('dgfjhk',doct)
   const navigate = useNavigate()
   const dispatch=useDispatch()
   const {id}=useParams()
@@ -24,21 +25,21 @@ function ProfilDoctor() {
 
 
   useEffect(() => {
-    setName(auth.name);
-    setLastName(auth.lastName);
-    setEmail(auth.email);
-    setAdress(auth.adress);
-    setPhone(auth.phone);
-    setPassword(auth.password);
-    setSpecialite(auth.specialite)
+    setName(doct.name);
+    setLastName(doct.lastName);
+    setEmail(doct.email);
+    setAdress(doct.adress);
+    setPhone(doct.phone);
+    setPassword(doct.password);
+    setSpecialite(doct.specialite)
     setNewPassword('');
     setConfirmPassword('')
-  }, [auth]);
+  }, [doct]);
 
 
-  const logout = () => {
+  const logoutdoct = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/login/Doctor');
   };
 
   const handelShow = () => {
@@ -63,7 +64,7 @@ function ProfilDoctor() {
       confirmPassword
     };
     try {
-    await putUser(auth._id, updatedData);
+    await putDoctor(doct._id, updatedData);
     setShow(false);
     alert("modifier avec succès !");
    
@@ -76,7 +77,7 @@ console.log(err)
 
   return (
     <div>
-      <Navigation  auth={auth} logout={logout}/>
+      <Navigation  auth={auth} logoutdoct={logoutdoct} doct={doct}/>
       <div className='bodyprofile ' >
 
      
@@ -94,10 +95,10 @@ console.log(err)
                   width={110}
                 />
                 <div className="mt-3">
-                  <h4>{`${auth.name} ${auth.lastName}`}</h4>
-                  <p className="">{`Medecine ${auth.specialite}`}</p>
+                  <h4>{`${doct.name} ${doct.lastName}`}</h4>
+                  <p className="">{`Medecine ${doct.specialite}`}</p>
                   <p className="">
-                    {auth.adress}
+                    {doct.address}
                   </p>
                   <button className="btn btn-primary">Follow</button>
                   <button className="btn btn-outline-primary">Message</button>
@@ -121,7 +122,7 @@ console.log(err)
                   <input
                     type="text"
                     className="form-control"
-                    defaultValue={auth.name}
+                    defaultValue={doct.name}
                   
                     onChange={(e)=>setName(e.target.value)}
                   />
@@ -135,7 +136,7 @@ console.log(err)
                   <input
                     type="text"
                     className="form-control"
-                    defaultValue={auth.lastName}
+                    defaultValue={doct.lastName}
                   
                     onChange={(e)=>setLastName(e.target.value)}
                   />
@@ -149,7 +150,7 @@ console.log(err)
                   <input
                     type="text"
                     className="form-control"
-                    defaultValue={auth.email}
+                    defaultValue={doct.email}
                 onChange={(e)=>setEmail(e.target.value)}
                   />
                 </div>
@@ -162,7 +163,7 @@ console.log(err)
                   <input
                     type="text"
                     className="form-control"
-                    defaultValue={auth.phone}
+                    defaultValue={doct.phone}
                   onChange={(e)=>setPhone(e.target.value)}
                   />
                 </div>
@@ -175,7 +176,7 @@ console.log(err)
                   <input
                     type="text"
                     className="form-control"
-                    defaultValue={auth.specialite}
+                    defaultValue={doct.specialite}
                   
                     onChange={(e)=>setSpecialite(e.target.value)}
                   />
@@ -189,7 +190,7 @@ console.log(err)
                   <input
                     type="text"
                     className="form-control"
-                    defaultValue={auth.adress}
+                    defaultValue={doct.adress}
                   onChange={(e)=>setAdress(e.target.value)}
                   />
                 </div>

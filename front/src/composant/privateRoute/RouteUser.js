@@ -6,8 +6,8 @@ import { useEffect } from 'react'
 import {getAccount} from '../../api/apiUser'
 import Admin from '../admin/Admin'
 import Navigation from '../navbar/Navigation'
-import AcceuilPat from '../patient/AcceuilPatient/AcceuilPat'
-import LoginUser from '../patient/login/LoginUser'
+import AcceuilPat from '../patient/js/AcceuilPat'
+import LoginUser from '../patient/js/LoginUser'
 function RouteUser() {
 
   const auth = useSelector(state=>state.User)

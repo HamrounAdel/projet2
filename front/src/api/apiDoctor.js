@@ -13,6 +13,20 @@ export const  getAllDoctor =async()=>{
   const {data} = await axios.get('http://localhost:5003/doctor/getAll')
   return data
 }
+
+export const putDoctor=async(id,values)=>{
+  const updatUser= await axios.put(`http://localhost:5003/doctor/updateprofil/${id}`,values)
+}
+
+
+
+
+
+
+
+
+
+
 // export const  postDoctor=async(values)=>{
 //     const response = await axios.post("/api/user/apply-doctor-account",{
 //       ...values,

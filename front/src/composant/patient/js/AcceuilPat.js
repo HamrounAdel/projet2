@@ -1,17 +1,17 @@
 import React, { useState,useEffect } from 'react'
+import '../css/acceuilPat.css'
 import { useSelector, useDispatch } from 'react-redux';
 import { setDoctor } from '../../../redux/doctorSlice';
-import Doctor from '../../doctor/cardDoctor/Doctor';
-import './acceuilPat.css'
+import Doctor from '../../doctor/js/Doctor';
+
 import { getAllDoctor } from '../../../api/apiDoctor';
-import { setUser } from '../../../redux/userSlice';
-import { getAllUser } from '../../../api/apiUser';
+
 function AcceuilPat() {
 
   const doctors = useSelector(state => state.Doctor)
-  console.log('users jdid',doctors)
+  console.log('doctors ',doctors)
   const auth = useSelector(state => state.User)
-  console.log('users jdid',auth)
+  console.log('users ',auth)
   const dispatch = useDispatch();
   const [userList, setUserList] = useState([]);
   const [searchTerm, setSearchTerm] = useState('')
@@ -34,19 +34,9 @@ function AcceuilPat() {
         getDoc();
       
        }, []);
-       console.log("this is users list :", userList);
+       console.log("this is doctors list :", userList);
  
-  const getUs = async () => {
-   const data = await getAllUser();
-   console.log('users from getUs', data.users);
-        //  setUserList(data.doctors);
-      // console.log('users', data);
-       dispatch(setUser(data.users));
-    } 
-     useEffect(() => {
-       getUs();
-     
-      }, []);
+ 
      
 
 
@@ -65,13 +55,14 @@ console.log('search',search)
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       /> 
-      <select value={searchAdress} onChange={(e) => setSearchAdress(e.target.value)}>
+      <select value={searchAdress}
+       onChange={(e) => setSearchAdress(e.target.value)}>
   <option defaultValue="">Sélectionnez une adresse</option>
   <option value="Mednine">Mednine</option>
   <option value="Tunis">Tunis</option>
   <option value="Gabes">Gabès</option>
   <option value="Sfax">Sfax</option>
-  <option value="Ben Arous">ben Arous</option>
+  <option value="Ben Arous">Ben Arous</option>
   <option value="Nabel">Nabeul</option>
   <option value="Tatawin">Tatawin</option>
   <option value="Ariana">Ariana</option>
@@ -97,7 +88,7 @@ onChange={(e) => setSearchSpeciality(e.target.value)}>
       
        {show && (<div className='grid-container'>
       {search.filter((el)=>(el.name.toLowerCase().includes(searchTerm.toLowerCase().trim()))
-      && (el.specialite === searchSpeciality) &&  (el.adress === searchAdress))
+      && (el.specialite === searchSpeciality) &&  (el.address === searchAdress))
       .map((el)=> (<Doctor el = {el}/>))}
     </div>)}
 

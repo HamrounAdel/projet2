@@ -1,7 +1,7 @@
 const express =require('express')
 const userRoutes=express.Router()
 const {register,login,updateUser,removeUser,getAllUser}=require('../controller/userController')
-const {auth}=require('../midelware/middelAuthen')
+const {auth}=require('../midelware/userAuthen')
 const {registerValidation,loginValidation,validation}=require('../midelware/middelValidation')
 //http://localhost:5003/auth/register
 userRoutes.post('/register',registerValidation,validation,register)

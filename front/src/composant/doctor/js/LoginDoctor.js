@@ -1,17 +1,17 @@
 import React,{useState} from 'react'
-import './login11.css'
+import '../css/login11.css'
 import { Link ,useNavigate} from 'react-router-dom'
 import axios from 'axios'
-function LoginUser() {
+function LoginDoctor() {
   const navigate =useNavigate()
   const [email,setEmail]=useState('')
   const [password,setPassword]=useState('')
     
    const handelLogin=async(values)=>{
-      const res = await axios.post('http://localhost:5003/auth/login',values)
+      const res = await axios.post('http://localhost:5003/doctor/login',values)
       await console.log('reponse login', res.data.token)
       await localStorage.setItem('token',res.data.token)
-      navigate('/auth')
+      navigate('/doct')
     }
   
   return (
@@ -34,7 +34,7 @@ function LoginUser() {
          <Link to='/'><a >Acceuil</a></Link> 
         </li>
         <li>
-         <Link to='/register/User'><a >Sign Up</a></Link> 
+         <Link to='/register/Doctor'><a >Sign Up</a></Link> 
         </li>
       
       </ul>
@@ -46,31 +46,30 @@ function LoginUser() {
     <div className="left">
       <div className="top_link">
         <a href="#">
-          
-          Espace Patient
+          Espace Doctor
         </a>
       </div>
       <div className="contact">
         <form action="">
           <h3>SIGN IN</h3>
-          <input type="email"
-           placeholder=" EMAIL *" 
+          <input type="text"
+           placeholder="USERNAME" 
            value={email}
            onChange={(e)=>setEmail(e.target.value)}
           />
           <input type="password" 
-          placeholder="PASSWORD *"
+          placeholder="PASSWORD"
           value={password}
            onChange={(e)=>setPassword(e.target.value)}
           />
-          <button className="submit" type='button' onClick={()=>handelLogin({email,password})}>LET'S GO</button>
+          <button className="submit"type='button' onClick={()=>handelLogin({email,password})}>LET'S GO</button>
         </form>
       </div>
     </div>
     <div className="right">
       <div className="right-text">
-        <h2>Rendez-Vous Medical</h2>
-        <h5><a style={{color:'blue'}}><Link to='/register/User'>Create new account</Link></a></h5>
+        <h2>Rendez-Vous</h2>
+        <h5><a style={{color:'blue'}}><Link to='/register/Doctor'>Create new account</Link></a></h5>
       </div>
       <div className="right-inductor">
         <img
@@ -89,4 +88,4 @@ function LoginUser() {
   )
 }
 
-export default LoginUser
+export default LoginDoctor

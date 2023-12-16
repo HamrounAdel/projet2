@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import './doctor.css'
+import '../css/doctor.css'
 import { Link } from 'react-router-dom'
 function Doctor({el}) {
   

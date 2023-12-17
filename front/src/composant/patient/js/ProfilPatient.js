@@ -32,7 +32,7 @@ function Profile() {
     setName(auth.name);
     setLastName(auth.lastName);
     setEmail(auth.email);
-    setAdress(auth.adress);
+    setAdress(auth.address);
     setPhone(auth.phone);
     setBirthday(auth.birthday);
     setPassword(auth.password);
@@ -42,7 +42,7 @@ function Profile() {
 
   const logout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    navigate('/login/User');
   };
 
   const handelShow = () => {
@@ -174,14 +174,14 @@ function Profile() {
               {/* Form Group (organization name)*/}
               <div className="col-md-6">
                 <label className="small mb-1" htmlFor="inputOrgName">
-                  Adress
+                  Address
                 </label>
                 <input
                   className="form-control"
                   id="inputOrgName"
                   type="text"
                   placeholder="Enter your adress"
-                  defaultValue={auth.adress}
+                  defaultValue={auth.address}
                   onChange={(e)=>setAdress(e.target.value)}
                 />
               </div>

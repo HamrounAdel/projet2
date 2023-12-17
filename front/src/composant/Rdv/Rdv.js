@@ -4,19 +4,21 @@ import { useNavigate } from 'react-router-dom'
 import {useSelector ,useDispatch} from 'react-redux'
 import Navigation from '../navbar/Navigation'
 import { useEffect, useState } from 'react'
-import { getAllUser } from '../../api/apiUser'
+import { getAllDoctor} from '../../api/apiDoctor'
 import {addRDV} from '../../api/apiRDV'
 function Rdv() {
  const navigate = useNavigate()
  const dispatch = useDispatch()
  const rdv= useSelector(state=>state.RDV)
-const auth = useSelector(state=>state.User)
+ const auth = useSelector(state=>state.User)
 console.log('auth =>', auth)
+const doct = useSelector(state=>state.Doctor)
+console.log('auth =>', doct)
 
 const [userList, setUserList] = useState([]);
 const [searchSpeciality,setSearchSpeciality]=useState('')
-const[patient,setPatient]=useState()
-const[doctor,setDoctor]=useState()
+const[namePatient,setNamePatient]=useState()
+const[nameDoctor,setNameDoctor]=useState()
 const[specialite,setSpecialite]=useState()
 const[dateRdv,setDateRdv]=useState()
 
@@ -27,26 +29,26 @@ const handelAdd=async(value)=>{
 
     const logout=()=>{
       localStorage.removeItem('token')
-      navigate('/login')
+      navigate('/login/User')
     }
 
 
-   const getUs = async () => {
+   const getdoct = async () => {
         try{
-        const data = await getAllUser();
-           console.log('users from getUs', data.users);
-           setUserList(data.users);
+        const data = await getAllDoctor();
+           console.log('users from getUs', data.doctors);
+           setUserList(data.doctors);
         }catch(error){
           console.error('Error fetching users:', error);
         }
          } 
       useEffect(() => {
-      getUs();
+      getdoct();
     }, []);
 
     console.log("this is users list :", userList);
    
-    const doctors = userList.filter(el =>(el.role === 'Doctor') &&(el.specialite===searchSpeciality))
+    const doctors = userList.filter(el =>(el.specialite===searchSpeciality))
   
   
   return (
@@ -60,8 +62,8 @@ const handelAdd=async(value)=>{
       <label htmlFor="text"  > Nom:  </label>
        <input type="text"  
         defaultValue={`${auth.name} ${auth.lastName}`}
-        value={patient}
-        onChange={(e)=>setPatient(e.target.value)}
+        value={namePatient}
+        onChange={(e)=>setNamePatient(e.target.value)}
        
          />
         </div>
@@ -91,13 +93,13 @@ const handelAdd=async(value)=>{
         
         <label htmlFor="text">Selection un  Doctor :</label>
         <select type="select"  
-        value={doctor}
-         onChange={(e)=>setDoctor(e.target.value)}  > 
+        value={nameDoctor}
+         onChange={(e)=>setNameDoctor(e.target.value)}  > 
         {doctors. map(el=>
           <option value={`${el.name} ${el.lastName}`}>{`${el.name} ${el.lastName}`} </option>)}
         </select>
       </div><br/>
-      <button type='button' onClick={()=>handelAdd({patient,doctor,dateRdv,specialite})}>Prendre Rendez-vous</button>
+      <button type='button' onClick={()=>handelAdd({namePatient,nameDoctor,dateRdv,specialite})}>Prendre Rendez-vous</button>
     </div>
     </>
   )

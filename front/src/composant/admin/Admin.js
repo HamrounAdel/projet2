@@ -1,7 +1,15 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import './admin.css'
-
+import DoctorList from '../doctor/js/DoctorList';
+import PatientList from '../patient/js/PatientList'
 function Admin() {
+  
+  const [selectedTab, setSelectedTab] = useState('dashboard');
+  const handleTabClick = (tab) => {
+    if (selectedTab !== tab) {
+      setSelectedTab(tab);
+    }
+  };
   return (
     <div>
 
@@ -18,17 +26,18 @@ function Admin() {
       </a>
     </header>
     <nav className="dashboard-nav-list">
-      <a href="#" className="dashboard-nav-item">
+      <a href="#" onClick={()=> handleTabClick('home')}
+      className="dashboard-nav-item">
         <i className="fas fa-home" />
         Home{" "}
       </a>
-      <a href="#" className="dashboard-nav-item active">
-        <i className="fas fa-tachometer-alt" /> dashboard
+      <a onClick={()=> handleTabClick('dashboard')} className="dashboard-nav-item active">
+        <i className="fas fa-tachometer-alt"  /> dashboard
       </a>
      
       <div className="dashboard-nav-dropdown">
         <a
-          href="#!"
+          onClick={()=> handleTabClick('Patient')}
           className="dashboard-nav-item dashboard-nav-dropdown-toggle"
         >
           <i className="fas fa-photo-video" /> Patient{" "}
@@ -38,7 +47,7 @@ function Admin() {
       </div>
       <div className="dashboard-nav-dropdown">
         <a
-          href="#!"
+          onClick={()=>handleTabClick('Doctor')}
           className="dashboard-nav-item dashboard-nav-dropdown-toggle"
         >
           <i className="fas fa-users" /> Doctor{" "}
@@ -47,7 +56,7 @@ function Admin() {
       </div>
       <div className="dashboard-nav-dropdown">
         <a
-          href="#!"
+          href="#!" onClick={()=>handleTabClick('RDV medicaux')}
           className="dashboard-nav-item dashboard-nav-dropdown-toggle"
         >
           <i className="fas fa-money-check-alt" /> RDV medicaux{" "}
@@ -70,19 +79,36 @@ function Admin() {
     </header>
     <div className="dashboard-content">
       <div className="container">
-        <div className="card">
+        {/* <div className="card">
           <div className="card-header">
             <h1>Welcome </h1>
           </div>
           <div className="card-body">
-            <p>Your account type is: Administrator</p>
+            <p>Your account type is: Administrator</p> */}
+            {selectedTab === 'home' && (
+                    <p>home </p>
+                  )}
+            {selectedTab === 'dashboard' && (
+                    <p>Dashboard Content Goes Here</p>
+                  )}
+                  {selectedTab === 'Patient' && (
+                    <> liste de patients
+                    <PatientList/>
+                    </>
+                  )}
+                  {selectedTab === 'Doctor' && (
+                   <> liste de doctors
+                   <table>{}</table></>
+            
+                  )}
+                   {selectedTab === 'RDV medicaux' && (
+                    <p>RDV medicaux</p>
+                  )}
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
 </div>
 </div>
   )

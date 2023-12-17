@@ -73,7 +73,7 @@ function RegisterDoctor() {
      
     </div>
   </header>
-  <hr/>
+  <br/>
      <div id="formContainer">
   <form id="form" action="#" method="POST">
     <fieldset>
@@ -181,9 +181,9 @@ onChange={(e) => setSpecialite(e.target.value)}>
         </div>
       <br />
       <br />
-      <input type="button" name="submit" id='submit'
+      <button type="button" name="Register" id="submit"
       onClick={()=>handelregisterDoctor({name,lastName,email,experience,
-      specialite,timings,numOrder,password,confirmPassword,address,phone})} />
+      specialite,timings,numOrder,password,confirmPassword,address,phone})}> Submit</button> 
     </fieldset>
   </form>
 </div>

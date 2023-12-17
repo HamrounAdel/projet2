@@ -43,10 +43,11 @@ const doctorSchema =new mongoose.Schema({
   
   status: {
     type: String,
+    enum: ["pending", "approved", "cancelled"],
     default: "pending",
   },
   
-  
+ 
 
 })
 module.exports= mongoose.model('doctors',doctorSchema)

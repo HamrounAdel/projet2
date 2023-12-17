@@ -26,13 +26,10 @@ const userSchema =new mongoose.Schema({
     type:Number,
     required:true
    }, 
-  isDoctor: {
-    type: Boolean,
-    default: false,
-  },
+  
   role: {
     type: String,
-    default: 'Admin'
+    default: 'Patient'
   },
   seenNotifications: {
     type: Array,
@@ -47,7 +44,7 @@ const userSchema =new mongoose.Schema({
     required:true,
   },
  
-  
+ 
 
 })
 module.exports= mongoose.model('users',userSchema)

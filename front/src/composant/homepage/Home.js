@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom';
 import Footer from './footer/Footer';
-
+import ListSpecialite from './specialite/ListSpecialite'
 
 function Home() {
   const navigate = useNavigate()
@@ -37,12 +37,14 @@ function Home() {
         <li>
          <Link to=''><a >A propos</a></Link> 
         </li>
-        <li>
+        <li className='dropdown'>
          <a >se connecter</a>
+         <div className='dropdown-content'>
          <ul>
-           <li><Link to='/login/User'>espace Patient</Link></li>
-           <li><Link to='/login/Doctor'>espace Doctor</Link></li>
+           <li><Link to='/login/User'> Patient</Link></li>
+           <li><Link to='/login/Doctor'> Doctor</Link></li>
          </ul>
+         </div>
         </li>
         
       
@@ -50,16 +52,21 @@ function Home() {
      
     </div>
   </header>
-   <div className="banner-area"> 
-      <div className='log'>
-        <div>
-      <h1 > Bienvenue à systéme de rendez-vous medical</h1>
-      <button>Trouver un medecine</button>
-        </div>
-      </div>
-      
-  </div>
-<footer className=''>Foo
+  <div className='log'>
+        
+        <h1 > Bienvenue à systéme de rendez-vous medical</h1>
+        
+         
+       </div> 
+    <div className='pos'>
+      <h1 >Listes de specialites </h1>
+  
+    <ListSpecialite/>
+    </div>
+    <div>
+  
+    </div>
+<footer className=''>
   <Footer/>
 </footer>
 

@@ -69,6 +69,7 @@ function LoginDoctor() {
     <div className="right">
       <div className="right-text">
         <h2>Rendez-Vous</h2>
+        <br/><br/>
         <h5><a style={{color:'blue'}}><Link to='/register/Doctor'>Create new account</Link></a></h5>
       </div>
       <div className="right-inductor">

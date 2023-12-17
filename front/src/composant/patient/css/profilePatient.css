@@ -1,3 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 .bodyprofile{
     margin-top:20px;
     background-color:#f2f6fc;

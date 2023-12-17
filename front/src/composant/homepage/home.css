@@ -105,3 +105,38 @@
     width: 500px;
     
   }
+  .pos{
+    padding-left: 300px;
+    padding-right: 300px;
+  }
+  .pos h1{
+    color:red;
+    text-align: center;
+  }
+
+  .dropdown {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 200px;
+    background-color: #fcfbfe;
+    box-shadow: 0 5px 10px 0 #0e0e0d;
+    z-index: 1;
+    padding: 10px 11px;
+    text-align: left;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+  }
+  .dropdown-content li{
+    list-style-type: none
+  }
+  .dropdown-content li:hover {
+    
+    color: #00b39b;
+          }

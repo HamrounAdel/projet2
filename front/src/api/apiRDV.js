@@ -13,7 +13,7 @@ export const  getAllRDV=async()=>{
 
  
 
-export const addRDV=async(values)=>{
+export const addRDV =async(values)=>{
     const ajoutRdv= await axios.post('http://localhost:5003/RDV/addRDV',{...values})
 }
 

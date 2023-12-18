@@ -1,20 +1,13 @@
 const mongoose = require('mongoose');
-const userSchema = require('./userModel')
+
 const rdvSchema = new mongoose.Schema({
-    // namePatient: {
-    //     type: String,
-    //     required: true,
-    //   },
-    //   nameDoctor: {
-    //     type: String,
-    //     required: true,
-    //   },
+   
       doctorInfo: {
-        type: Object,
-        required: false
+        type: String,
+        required: false,
       },
       userInfo: {
-        type: Object,
+        type: String,
         required: false,
       },
       date: {

@@ -1,10 +1,36 @@
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react'
+import { useDispatch,useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import './admin.css'
 import DoctorList from '../doctor/js/DoctorList';
 import PatientList from '../patient/js/PatientList'
+
+import { getAllDoctor } from '../../api/apiDoctor';
+import Doctor from '../doctor/js/Doctor';
 function Admin() {
-  
+  const doct=useSelector(state=>state.Doctor)
   const [selectedTab, setSelectedTab] = useState('dashboard');
+  const [doctorList, setDoctorList] = useState([]);
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+     const getDoc = async () => {
+      try{
+      const data = await getAllDoctor();
+        //  console.log('users', data);
+         console.log('doctors from getdoc', data.doctors);
+         setDoctorList(data.doctors);
+          // dispatch(setUser(data.users));
+      }catch(error){
+        console.error('Error fetching users:', error);
+      }
+       } 
+    useEffect(() => {
+    getDoc();
+  }, []);
+  console.log("this is doctors list :", doctorList);
+  const doctors = Object.values( doctorList)
+ 
   const handleTabClick = (tab) => {
     if (selectedTab !== tab) {
       setSelectedTab(tab);
@@ -93,14 +119,36 @@ function Admin() {
                   )}
                   {selectedTab === 'Patient' && (
                     <> liste de patients
-                    <PatientList/>
+                  
                     </>
                   )}
                   {selectedTab === 'Doctor' && (
-                   <> liste de doctors
-                   <table>{}</table></>
-            
-                  )}
+                   <div > liste de doctors
+                      <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>LastName</th>
+          <th>specialite</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {doctors.map((el) => (
+          <tr>
+            <td> {el.name}</td>
+            <td>{el.lastName}</td>
+            <td>{el.specialite}</td>
+            <td>{el.address}</td>
+            <td>{el.phone}</td>
+            <td></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+            </div>)}      
                    {selectedTab === 'RDV medicaux' && (
                     <p>RDV medicaux</p>
                   )}

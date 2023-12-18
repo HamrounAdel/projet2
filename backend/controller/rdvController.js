@@ -11,6 +11,8 @@ exports.getRDV = async(req,res)=>{
   }
 
 }
+
+
 exports.addRDV = async(req,res)=>{
   try {
     const newRDV = new rdvSchema(req.body);
@@ -35,46 +37,38 @@ exports.deletRDV = async (req, res) => {
   }
 };
 
-exports.getByDoctor=async (req, res) => {
+
+
+
+///fghjklm
+
+exports.AjoutRdv= async (req, res) => {
   try {
-    const doctor = await doctorShema.findOne({ userId: req.body.userId });
-    const appointments = await rdvSchema.find({ doctorId: doctor._id });
-    res.status(200).send({
-      message: "Appointments fetched successfully",
-      success: true,
-      data: appointments,
+    const { doctorId, userInfo, date, time } = req.body;
+    // Check if the doctor exists
+    const doctor = await doctorShema.findById(doctorId);
+    if (!doctor) {
+      return res.status(404).json({ message: 'Doctor not found' });
+    }
+    // Create a new appointment
+    const appointment = new rdvSchema({
+      doctorInfo: doctor,
+      userInfo,
+      date,
+      time,
+      status: 'pending',
     });
+
+    // Save the appointment
+    const savedAppointment = await appointment.save();
+
+    res.status(201).json(savedAppointment);
   } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      message: "Error fetching appointments",
-      success: false,
-      error,
-    });
+    res.status(500).json({ message: error.message });
   }
 }
 
 
 
-exports . getMyAppointment = async (req, res) => {
-  try {
-    // step-1: retrieve appointments from booking
-    const bookings = await rdvSchema.find({ user: req.userId });
-    // step-2: extract doctor ids from appointments
-    const doctorIds = bookings.map((el) => el.doctor.id);
-    // step-3: retrieve doctors using doctor ids
-    const doctors = await doctorShema.find({ _id: { $in: doctorIds } }).select(
-      "-password"
-    );
-    res.status(200).json({
-      success: true,
-      message: "Appointments are getting",
-      data: doctors,
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: "Something went wrong",
-    });
-  }
-};
+
+

@@ -1,6 +1,6 @@
 const express = require('express');
 const rdvRoutes = express.Router();
-const {addRDV,getRDV,deletRDV}=require('../controller/rdvController')
+const {addRDV,getRDV,deletRDV,AjoutRdv}=require('../controller/rdvController')
 
 
 //http://localhost:5003/RDV/addRDV

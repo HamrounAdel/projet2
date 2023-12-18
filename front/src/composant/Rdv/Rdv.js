@@ -19,8 +19,8 @@ const [userList, setUserList] = useState([]);
 const [searchSpeciality,setSearchSpeciality]=useState('')
 const[namePatient,setNamePatient]=useState()
 const[nameDoctor,setNameDoctor]=useState()
-const[specialite,setSpecialite]=useState()
-const[dateRdv,setDateRdv]=useState()
+const[heure,setHeure]=useState("00:00")
+const[dateRdv,setDateRdv]=useState("jj/mm/aaaa")
 
 const handelAdd=async(value)=>{
   await addRDV(value)
@@ -31,8 +31,6 @@ const handelAdd=async(value)=>{
       localStorage.removeItem('token')
       navigate('/login/User')
     }
-
-
    const getdoct = async () => {
         try{
         const data = await getAllDoctor();
@@ -48,58 +46,39 @@ const handelAdd=async(value)=>{
 
     console.log("this is users list :", userList);
    
-    const doctors = userList.filter(el =>(el.specialite===searchSpeciality))
-  
-  
   return (
     <>
-    <Navigation auth={auth} logout={logout}   />
+    <Navigation auth={auth} logout={logout}  />
    
     <div className='rdv-container'>
     <h2>Prendre un Rendez-vous</h2>
       <div>
         <div>
-      <label htmlFor="text"  > Nom:  </label>
+      <label htmlFor="text"  > Nom du Patient:  </label>
        <input type="text"  
         defaultValue={`${auth.name} ${auth.lastName}`}
-        value={namePatient}
         onChange={(e)=>setNamePatient(e.target.value)}
        
          />
         </div>
         <br/>
+        <label htmlFor="text"  > Nom du doctor:  </label>
+        <input  type="text" 
+        defaultValue={userList.name}
+         onChange={(e) => setNameDoctor(e.target.value)}/>
+          
 
         <label htmlFor="datePicker">Selection une Date :</label>
         <input type="date"  
         value={dateRdv}
         onChange={(e)=>setDateRdv(e.target.value)} />
-
-        <label htmlFor="text">Selection un Specialite :</label>
-        <select type="select" 
-        value={searchSpeciality} 
         
-        onChange={(e) => setSearchSpeciality(e.target.value)} 
-        > 
-        <option value={specialite} 
-        onChange={(e)=>setSpecialite(e.target.value)}></option>
-        <option value="Géneraliste">Géneraliste</option>
-  <option value="Pédiatre">Pédiatre</option>
-  <option value="Dentiste">Dentiste</option>
-  <option value="Ophtalmologue">Ophtalmologue</option>
-  <option value="Ostéopathe">Ostéopathe</option>
-  <option value="Gastro-entérologue">Gastro-entérologue</option>
-        </select>
-
-        
-        <label htmlFor="text">Selection un  Doctor :</label>
-        <select type="select"  
-        value={nameDoctor}
-         onChange={(e)=>setNameDoctor(e.target.value)}  > 
-        {doctors. map(el=>
-          <option value={`${el.name} ${el.lastName}`}>{`${el.name} ${el.lastName}`} </option>)}
-        </select>
+         <label htmlFor="datePicker">Heure :</label>
+        <input type="heure"  
+        value={heure}
+        onChange={(e)=>setHeure(e.target.value)} />       
       </div><br/>
-      <button type='button' onClick={()=>handelAdd({namePatient,nameDoctor,dateRdv,specialite})}>Prendre Rendez-vous</button>
+      <button type='button' onClick={()=>handelAdd({namePatient,heure,nameDoctor,dateRdv})}>Prendre Rendez-vous</button>
     </div>
     </>
   )

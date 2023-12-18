@@ -1,6 +1,8 @@
 const express = require('express')
 const rdvSchema = require('../model/rdvModel')
 const doctorShema =require('../model/doctorModel')
+const userShema =require('../model/userModel')
+
 
 exports.getRDV = async(req,res)=>{
   try{
@@ -44,16 +46,15 @@ exports.deletRDV = async (req, res) => {
 
 exports.AjoutRdv= async (req, res) => {
   try {
-    const { doctorId, userInfo, date, time } = req.body;
-    // Check if the doctor exists
-    const doctor = await doctorShema.findById(doctorId);
+    const user = await userShema.findOne({_id: req.body.userId});
+    const doctor = await doctorShema.findOne({_id: req.body.doctorId});
     if (!doctor) {
       return res.status(404).json({ message: 'Doctor not found' });
     }
     // Create a new appointment
     const appointment = new rdvSchema({
       doctorInfo: doctor,
-      userInfo,
+      userInfo:user,
       date,
       time,
       status: 'pending',

@@ -2,14 +2,22 @@ const mongoose = require('mongoose');
 
 const rdvSchema = new mongoose.Schema({
    
-      doctorInfo: {
-        type: String,
-        required: false,
-      },
-      userInfo: {
-        type: String,
-        required: false,
-      },
+  userId: {
+    type: String,
+    required: true,
+  },
+  doctorId: {
+    type: String,
+    required: true,
+  },
+  doctorInfo: {
+    type: Object,
+    required: true,
+  },
+  userInfo: {
+    type: Object,
+    required: true,
+  },
       date: {
         type: Date,
         required: false,

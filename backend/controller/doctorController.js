@@ -97,32 +97,4 @@ exports.updateDoctor = async (req, res) => {
 
 
 
-   // exports.getAllDoctor = async (req, res) => {
-  //   try {
-  //     const { query } = req.query;
-  //     let doctors;
-  //     if (query) {
-  //       doctors = await doctorSchema.find({
-  //         status: "approved",
-  //         $or: [
-  //           { name: { $regex: query, $options: "i" } },
-  //           { specialite: { $regex: query, $options: "i" } },
-  //         ],
-  //       }).select("-password");
-  //     } else {
-  //       doctors = await doctorSchema.find({ status: "approved" }).select(
-  //         "-password"
-  //       );
-  //     }
-  //     res.status(200).json({
-  //       success: true,
-  //       message: "Doctor found",
-  //       data: doctors,
-  //     });
-  //   } catch (error) {
-  //     res.status(404).json({
-  //       success: false,
-  //       message: "Not found",
-  //     });
-  //   }
-  // };
+   

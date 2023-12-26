@@ -17,9 +17,9 @@ const {rdvId} = useParams()
   };
   const fetchReservations = async () => {
     try {
-      const response = await getAllRDV();
-      console.log('response',response)
-       setReservations(response.data);
+      const data = await getAllRDV();
+      console.log('response',data.rdvs)
+       setReservations(data.rdvs);
     } catch (error) {
       console.error('Error fetching reservations:', error.message);
     }
@@ -28,6 +28,7 @@ const {rdvId} = useParams()
   useEffect(() => {
     fetchReservations();
   }, []);
+  
 console.log('reservations',reservations)
 
   return (

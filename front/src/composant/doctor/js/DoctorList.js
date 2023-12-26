@@ -34,7 +34,7 @@ function DoctorList() {
  
   const logout=()=>{
     localStorage.removeItem('token')
-    navigate('/login')
+    navigate('/login/Doctor')
   }
     const doctors = Object.values( doctorList)
    console.log('doctors filter',doctors)

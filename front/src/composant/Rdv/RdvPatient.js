@@ -21,7 +21,7 @@ function RdvPatient() {
         try {
           const response = await getRdvByUserId();
           console.log('response',response)
-           setReservations(response.data);
+           setReservations(response);
         } catch (error) {
           console.error('Error fetching reservations:', error.message);
         }
@@ -29,7 +29,7 @@ function RdvPatient() {
     
       useEffect(() => {
         fetchReservations();
-      }, [userId]);
+      }, []);
     console.log('reservations',reservations)
     const logout = () => {
         localStorage.removeItem('token');
@@ -42,8 +42,8 @@ function RdvPatient() {
       <ul>
        { 
        (reservations).map((reservation) => (
-          <li key={reservation._id}>
-            {reservation.dateRdv} - {reservation.accepted ? true : false}
+          <li >
+            {reservation.dateRdv}  {reservation.accepted ? true : false}
           </li>
         ))} 
       </ul>

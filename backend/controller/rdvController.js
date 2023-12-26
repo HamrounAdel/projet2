@@ -1,75 +1,98 @@
 const express = require('express')
 const rdvSchema = require('../model/rdvModel')
-const doctorShema =require('../model/doctorModel')
-const userShema =require('../model/userModel')
 
+// add new rdv
+exports.addRDV = async (req, res) => {
+  const { userId, doctorId, dateRdv } = req.body;
 
-exports.getRDV = async(req,res)=>{
-  try{
-    const newRDV = await rdvSchema.find();
-    res.json({msg:"consulter les RDV ",newRDV});
-  } catch(error){
-    console.log(error)
+  try {
+      const newRdv = new rdvSchema({
+          userId,
+          doctorId,
+          dateRdv,
+          accepted:false
+      });
+
+      await newRdv.save();
+      res.json(newRdv);
+  } catch (err) {
+      res.status(500).json({ message: err.message });
   }
+};
 
-}
-
-
-exports.addRDV = async(req,res)=>{
+//get all rdv
+exports.getAllRdv = async (req, res) => {
   try {
-    const newRDV = new rdvSchema(req.body);
-    await newRDV.save();
-    res.json({msg:"add new RDV",newRDV});
-        
-      } catch (error) {
-        console.error(error);
-        
-      }
-}
-
-exports.deletRDV = async (req, res) => {
-  try {
-    const removeRDV = await rdvSchema.findByIdAndDelete(req.params.id);
-    if (!removeRDV) {
-      return res.status(404).json({ error: 'Rendez-vous introuvable' });
-    }
-    res.json({ message: 'Rendez-vous supprimé avec succès' });
+    const rdvs = await rdvSchema.find();
+    res.json({msg:"les rdvs ",rdvs});
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+}
+
+//get rdv  by user
+exports.getUserRDV = async (req, res) => {
+  try {
+      const rdv = await rdvSchema.find({ userId: req.params.userId });
+      res.json(rdv);
+  } catch (err) {
+      res.status(500).json({ message: err.message });
+  }
+};
+
+//get rdv  by doctor
+exports.getDoctorRDV = async (req, res) => {
+  try {
+      const rdv = await rdvSchema.find({ doctorId: req.params.doctorId });
+      res.json(rdv);
+  } catch (err) {
+      res.status(500).json({ message: err.message });
+  }
+};
+
+//get rdv byId
+exports.getRdvById = async (req, res) => {
+  try {
+    const {  rdvId } = req.params;
+    const reservation = await rdvSchema.findOne({ _id: rdvId});
+
+    if (!reservation) {
+      return res.status(404).json({ message: 'Reservation not found' });
+    }
+
+    res.json(reservation);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
   }
 };
 
 
-
-
-///fghjklm
-
-exports.AjoutRdv= async (req, res) => {
+// delete rdv
+exports.deletRDV = async (req, res) => {
   try {
-    const user = await userShema.findOne({_id: req.body.userId});
-    const doctor = await doctorShema.findOne({_id: req.body.doctorId});
-    if (!doctor) {
-      return res.status(404).json({ message: 'Doctor not found' });
-    }
-    // Create a new appointment
-    const appointment = new rdvSchema({
-      doctorInfo: doctor,
-      userInfo:user,
-      date,
-      time,
-      status: 'pending',
-    });
-
-    // Save the appointment
-    const savedAppointment = await appointment.save();
-
-    res.status(201).json(savedAppointment);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+      await rdvSchema.findOneAndDelete({ _id: req.params.rdvId});
+      res.json({ message: 'Reservation deleted successfully' });
+  } catch (err) {
+      res.status(500).json({ message: err.message });
   }
-}
+};
 
+//update rdv
+exports.updateRDV = async (req, res) => {
+  try {
+      const updatedRdv = await rdvSchema.findOneAndUpdate(
+          { _id: req.params.rdvId},
+          req.body,
+          { new: true, useFindAndModify: false }
+      );
 
+      if (!updatedRdv) {
+          return res.status(404).send({ message: 'Reservation not found' });
+      }
 
-
+      res.send(updatedRdv);
+  } catch (error) {
+      res.status(500).send(error);
+  }
+};
 

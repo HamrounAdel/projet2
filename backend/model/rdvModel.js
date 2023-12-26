@@ -2,34 +2,23 @@ const mongoose = require('mongoose');
 
 const rdvSchema = new mongoose.Schema({
    
-  userId: {
-    type: String,
-    required: true,
-  },
-  doctorId: {
-    type: String,
-    required: true,
-  },
-  doctorInfo: {
-    type: Object,
-    required: true,
-  },
-  userInfo: {
-    type: Object,
-    required: true,
-  },
-      date: {
-        type: Date,
-        required: false,
-      },
-      time: {
+  userId: {  
+   type: mongoose.Types.ObjectId,
+      ref: 'users', 
+      required: false},
+  doctorId: {  
+     type: mongoose.Types.ObjectId, 
+     ref: 'doctors',
+      required: false },
+
+      dateRdv: {
         type: String,
-        required: false,
+        required: true,
       },
+    
       status: {
-        type: String,
-        required: false,
-        default: "pending",
+        type: Boolean,
+        default: false,
       },
 })
 

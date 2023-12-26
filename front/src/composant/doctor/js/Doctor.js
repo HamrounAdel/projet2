@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import '../css/doctor.css'
 import { Link } from 'react-router-dom'
+
 function Doctor({el}) {
   
   
@@ -39,7 +40,7 @@ function Doctor({el}) {
             <div className="m-t-xs btn-group">
              
               <a className="btn btn-xs btn-white"    >
-                <i className="fa fa-user-plus"  /><Link to="/patient/rdv">Prendre un Rendez-Vous</Link> 
+                <i className="fa fa-user-plus"  /><Link to={`/patient/rdv?doctorId=${el._id}`} >Prendre un Rendez-Vous</Link> 
               </a>
             </div>
           </div>

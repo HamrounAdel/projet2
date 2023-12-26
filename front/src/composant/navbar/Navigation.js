@@ -37,7 +37,7 @@ function Navigation({auth,logout,logoutdoct,doct}) {
     
     <ul class="nav-list">
       <li><a ><Link to='/auth'>Acceuil</Link></a></li>
-      {/* <li><a  ><Link to='/patient/rdv'>Prendre un RDV</Link></a></li> */}
+     <li><a  ><Link to='/rdv/consulter'>Consulter mon Rendez-vous</Link></a></li> 
       
       <li><a ><Link to='/patient/medecines'>Medecines</Link></a></li>
       <li className='dropdown'><a >{auth.email}</a> 
@@ -61,7 +61,7 @@ function Navigation({auth,logout,logoutdoct,doct}) {
     
     <ul class="nav-list">
         <li><a ><Link to='/doct'>Acceuil</Link></a></li>
-        <li><a ><Link to=''>consulter les RDVs</Link></a></li>
+        <li><a ><Link to={`/doctor/updatRdv?doctorId=${doct._id}`}>consulter les RDVs</Link></a></li>
         <li><a ><Link to=''>consulter mes patient</Link></a></li>
         <li className='dropdown'><a >{doct.email}</a> 
          <div className='dropdown-content'>

@@ -12,8 +12,8 @@ app.use(cors())
 app.use(express.json());
 //connecter sur database
 connectdb();
-//les paths
 
+//les paths
 app.use('/auth',userRoutes);
 app.use('/RDV',rdvRoutes);
 app.use('/doctor',doctorRoute);

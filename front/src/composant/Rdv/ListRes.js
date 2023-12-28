@@ -1,14 +1,14 @@
 import React, { useState ,useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams ,useLocation} from 'react-router-dom'
 import { getAllRDV , getRdvByUserId} from '../../api/apiRDV'
 import Navigation from '../navbar/Navigation'
 import { setRDV } from '../../redux/rdvSlice'
 function ListRes() {
     const auth = useSelector(state => state.User)
-    const doct=useSelector(state=>state.Doctor)
     const rdv=useSelector(state=>state.RDV)
-    const userId =useParams()
+    const location = useLocation();
+    const userId = new URLSearchParams(location.search).get('userId');
     console.log ('reservation',rdv)
   const navigate=useNavigate()
   const dispatch= useDispatch()
@@ -47,7 +47,7 @@ function ListRes() {
        { 
       Object.values(reservation).map((reservation) => (
           <li key={reservation._id}>
-            {reservation.doctor}-{reservation.dateRdv} - {reservation. status ? true:false }
+            {reservation.doctor}-{reservation.dateRdv} - {reservation. status  }
             {/* <button >Delete</button> */}
           </li>
         ))} 

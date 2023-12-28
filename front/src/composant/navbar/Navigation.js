@@ -37,7 +37,7 @@ function Navigation({auth,logout,logoutdoct,doct}) {
     
     <ul class="nav-list">
       <li><a ><Link to='/auth'>Acceuil</Link></a></li>
-     <li><a  ><Link to='/rdv/consulter'>Consulter mon Rendez-vous</Link></a></li> 
+     <li><a  ><Link to={`/rdv/consulter?userId=${auth._id}`}>Consulter mon Rendez-vous</Link></a></li> 
       
       <li><a ><Link to='/patient/medecines'>Medecines</Link></a></li>
       <li className='dropdown'><a >{auth.email}</a> 

@@ -10,7 +10,14 @@ const rdvSchema = new mongoose.Schema({
      type: mongoose.Types.ObjectId, 
      ref: 'doctors',
       required: false },
-
+ doctor:{
+  type:Object,
+  required:false
+ },
+ user:{
+  type:String,
+  required:false
+},
       dateRdv: {
         type: String,
         required: true,

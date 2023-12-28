@@ -1,36 +1,41 @@
 import React, { useState,useEffect } from 'react'
 import { deletRDV ,getRdvByUserId } from '../../api/apiRDV';
 import Navigation from '../navbar/Navigation';
-import { useParams,useNavigate } from 'react-router-dom';
+import { useParams,useNavigate ,useLocation} from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 function RdvPatient() {
+
     const auth = useSelector(state => state.User)
     const [reservations, setReservations] = useState([]);
-    const {userId} = useParams()
+    // const {userId} = useParams()
     const navigate =useNavigate()
-    
+    const location = useLocation();
+   const doctorId = new URLSearchParams(location.search).get('doctorId');
+   const userId = auth._id
       const handleDeleteReservation = async (rdvId) => {
         try {
           await deletRDV(rdvId);
-          // You may want to refresh the reservation list here
         } catch (error) {
           console.error('Error deleting reservation:', error.message);
         }
       };
-      const fetchReservations = async () => {
+
+      const fetchReservations = async (id) => {
         try {
-          const response = await getRdvByUserId();
-          console.log('response',response)
-           setReservations(response);
+          const response = await getRdvByUserId(id);
+          console.log('response',response.rdv)
+           setReservations(response.rdv);
         } catch (error) {
           console.error('Error fetching reservations:', error.message);
         }
       };
     
       useEffect(() => {
-        fetchReservations();
-      }, []);
+        fetchReservations(userId);
+      }, [userId]);
     console.log('reservations',reservations)
+
     const logout = () => {
         localStorage.removeItem('token');
         navigate('/login/User');
@@ -43,7 +48,8 @@ function RdvPatient() {
        { 
        (reservations).map((reservation) => (
           <li >
-            {reservation.dateRdv}  {reservation.accepted ? true : false}
+           {reservation.doctor}- {reservation.dateRdv} -  {reservation.status}
+            <button onClick={()=>handleDeleteReservation(reservation._id)}>Delete</button>
           </li>
         ))} 
       </ul>

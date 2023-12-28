@@ -1,14 +1,18 @@
 const express = require('express')
 const rdvSchema = require('../model/rdvModel')
-
+const doctorSchema = require('../model/doctorModel') 
+const userSchema =require('../model/userModel')
 // add new rdv
 exports.addRDV = async (req, res) => {
-  const { userId, doctorId, dateRdv } = req.body;
-
+  const { userId, doctorId, dateRdv ,user,doctor} = req.body;
+//  const doctor =await doctorSchema.findById(userId)
+//  const user = await userSchema.findById(doctorId)
   try {
       const newRdv = new rdvSchema({
           userId,
           doctorId,
+          user,
+          doctor,
           dateRdv,
           accepted:false
       });
@@ -21,7 +25,7 @@ exports.addRDV = async (req, res) => {
 };
 
 //get all rdv
-exports.getAllRdv = async (req, res) => {
+exports.getAllRdvs = async (req, res) => {
   try {
     const rdvs = await rdvSchema.find();
     res.json({msg:"les rdvs ",rdvs});
@@ -33,6 +37,7 @@ exports.getAllRdv = async (req, res) => {
 //get rdv  by user
 exports.getUserRDV = async (req, res) => {
   try {
+    
       const rdv = await rdvSchema.find({ userId: req.params.userId });
       res.json(rdv);
   } catch (err) {

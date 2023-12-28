@@ -7,6 +7,8 @@ import PatientList from '../patient/js/PatientList'
 
 import { getAllDoctor } from '../../api/apiDoctor';
 import Doctor from '../doctor/js/Doctor';
+import ListMedec from './ListMedec';
+import ListUser from './ListUser';
 function Admin() {
   const doct=useSelector(state=>state.Doctor)
   const [selectedTab, setSelectedTab] = useState('dashboard');
@@ -118,36 +120,13 @@ function Admin() {
                     <p>Dashboard Content Goes Here</p>
                   )}
                   {selectedTab === 'Patient' && (
-                    <> liste de patients
-                  
+                    <> 
+                   <ListUser/>
                     </>
                   )}
                   {selectedTab === 'Doctor' && (
-                   <div > liste de doctors
-                      <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>LastName</th>
-          <th>specialite</th>
-          <th>Address</th>
-          <th>Phone</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        {doctors.map((el) => (
-          <tr>
-            <td> {el.name}</td>
-            <td>{el.lastName}</td>
-            <td>{el.specialite}</td>
-            <td>{el.address}</td>
-            <td>{el.phone}</td>
-            <td></td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+                   <div > 
+                     <ListMedec/>
             </div>)}      
                    {selectedTab === 'RDV medicaux' && (
                     <p>RDV medicaux</p>

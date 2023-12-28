@@ -2,7 +2,7 @@ import axios from 'axios'
 
 //get tous les rdvs
 export const  getAllRDV=async()=>{
-    const {data} = await axios.get('http://localhost:5003/RDV/getRDV')
+    const {data} = await axios.get('http://localhost:5003/RDV/getAll')
     return data
 }
 //get rdv byId
@@ -16,8 +16,8 @@ export const getRdvByDoctorId=async(doctorId)=>{
     return data
 }
 //get Rdv by userId
-export const getRdvByUserId=async(idUser)=>{
-    const {data}= await axios.get(`http://localhost:5003/RDV/getbyUser/${idUser}`)
+export const getRdvByUserId=async(userId)=>{
+    const {data}= await axios.get(`http://localhost:5003/RDV/getbyUser/${userId}`)
     return data
 }
 // ajout de rdv

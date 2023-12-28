@@ -2,7 +2,7 @@ const express = require('express');
 const doctorRoute = express.Router();
 
 const { authdoct} = require('../midelware/doctorAuthent');
-const {register,login,getAllDoctor,updateDoctor,removeDoctor}  =require('../controller/doctorController');
+const {register,login,getAllDoctor,updateDoctor,removeDoctor,getDoctorById}  =require('../controller/doctorController');
 const {registerValidation,loginValidation,validation}=require('../midelware/middelValidation')
 //http://localhost:5003/doctor/register
 doctorRoute.post('/register',registerValidation,validation,register)
@@ -17,6 +17,9 @@ doctorRoute.get('/moncompte' ,authdoct,(req,res)=>{
 });
 //http://localhost:5003/doctor/getAll
 doctorRoute.get('/getAll',getAllDoctor)
+
+//http://localhost:5003/doctor/getUnique/:id
+doctorRoute.get('/getUnique/:id',getDoctorById)
 
 // partie update profil user 
 //http://localhost:5003/doctor/updateprofil/:id

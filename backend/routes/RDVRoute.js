@@ -1,13 +1,13 @@
 const express = require('express');
 const rdvRoutes = express.Router();
-const {addRDV,getAllRdv,getDoctorRDV , updateRDV,getUserRDV,deletRDV,getRdvById}=require('../controller/rdvController')
+const {addRDV,getDoctorRDV , updateRDV,getUserRDV,deletRDV,getRdvById, getAllRdvs}=require('../controller/rdvController')
 
 
 //http://localhost:5003/RDV/addRDV
 rdvRoutes.post('/addRDV',addRDV)
 
 //http://localhost:5003/RDV/getAll
-rdvRoutes.post('/getAll',getAllRdv )
+rdvRoutes.get('/getAll',getAllRdvs )
 
 //http://localhost:5003/RDV/getbyUser/:userId
 rdvRoutes.get('/getbyUser/:userId', getUserRDV);

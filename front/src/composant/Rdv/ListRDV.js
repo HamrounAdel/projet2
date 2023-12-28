@@ -31,6 +31,7 @@ const {rdvId} = useParams()
   
 console.log('reservations',reservations)
 
+
   return (
     <div>
       <h2>Reservations</h2>
@@ -39,6 +40,7 @@ console.log('reservations',reservations)
        (reservations).map((reservation) => (
           <li key={reservation._id}>
             {reservation.dateRdv} - {reservation.accepted ? true : false}
+            <button onClick={handleDeleteReservation}>Delete</button>
           </li>
         ))} 
       </ul>

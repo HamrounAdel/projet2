@@ -64,16 +64,18 @@ const fetchReservationData = async () => {
     <div>
        <Navigation  auth={auth} logoutdoct={logoutdoct} doct={doct}/>
       <h2>Update Reservation</h2>
-      <label> </label>
+      <label>{formData.user}
+          </label>
       <form onSubmit={handleSubmit}>
+      
         <label>
-          Accepted:
-          <input
-            type="checkbox"
-            name="accepted"
+          Reponse de Rendez-Vous:
+          <select
             checked={formData.accepted}
-            onChange={handleChange}
-          />
+            onChange={handleChange}>
+                 <option value="accepted">accepted</option>
+                 <option value="canceled">canceled</option>
+          </select>
         </label>
         <button type="submit">Update Reservation</button>
       </form>

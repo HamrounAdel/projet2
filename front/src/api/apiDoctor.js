@@ -18,7 +18,10 @@ export const putDoctor=async(id,values)=>{
   const updatUser= await axios.put(`http://localhost:5003/doctor/updateprofil/${id}`,values)
 }
 
-
+export const getUniqueDoct=async(id)=>{
+  const {data}= await axios.get(`http://localhost:5003/doctor/getUnique/${id}`)
+  return data
+}
 
 
 

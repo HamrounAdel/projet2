@@ -1,15 +1,8 @@
 import {createSlice}  from '@reduxjs/toolkit'
 const  rdvSlice=createSlice({
     name:'RDV',
-    initialState:([
-        //    { 
-        // namePatient:"",
-        // specialite:"",
-        // nameDoctor:"",
-        // dateRDV:""
-        //    },
-         
-    ]),
+    initialState:([]),
+    
     reducers:{
       setRDV:(state,action)=>{
         return  action.payload

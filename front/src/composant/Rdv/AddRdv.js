@@ -4,7 +4,7 @@ import { useNavigate ,useParams,useLocation} from 'react-router-dom'
 import {useSelector } from 'react-redux'
 import Navigation from '../navbar/Navigation'
 import { useEffect, useState } from 'react'
-import { getAllDoctor} from '../../api/apiDoctor'
+import { getUniqueDoct} from '../../api/apiDoctor'
 import {addingRdv} from '../../api/apiRDV'
 
 function Rdv({el}) {
@@ -14,15 +14,33 @@ console.log('auth =>', auth)
 const navigate = useNavigate()
 const location = useLocation();
 const doctorId = new URLSearchParams(location.search).get('doctorId');
+const doctor = new URLSearchParams(location.search).get('doctor');
 const {userId}=useParams()
 
+const [doctorDetails, setDoctorDetails] = useState({});
 
+  useEffect(() => {
+    const fetchDoctorDetails = async () => {
+      try {
+        if (doctorId) {
+          const response = await getUniqueDoct(doctorId);
+          setDoctorDetails(response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching doctor details:', error.message);
+      }
+    };
+
+    fetchDoctorDetails();
+  }, [doctorId]);
 console.log('doctorId',doctorId,'userId',userId)
 
     const [formData, setFormData] = useState({
       userId:auth._id,
       doctorId,
-      status:false,
+      user:`${auth.name} ${auth.lastName}`,
+      doctor,
+     status:false,
       dateRdv: '',
     });
     const handleChange = (e) => {

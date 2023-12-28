@@ -16,13 +16,14 @@ import RouteDoctor from './composant/privateRoute/RouteDoctor';
 import ListRDV from './composant/Rdv/ListRDV';
 import UpdateRdv from './composant/Rdv/UpdateRdv';
 import RdvPatient from './composant/Rdv/RdvPatient';
+import ListRes from './composant/Rdv/ListRes';
 
 function App() {
   return (
     <div >
       
    <Routes>
-   <Route path='/rdv/consulter' element={<RdvPatient/>}/>
+   <Route path='/rdv/consulter' element={<ListRes/>}/>
    <Route path='/' element={<Home/>}/>
    <Route path='/auth' element={<RouteUser/>}/>
    <Route  path='/login/User'  element={<LoginUser/>}/>

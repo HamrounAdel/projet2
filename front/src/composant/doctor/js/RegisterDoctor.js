@@ -158,6 +158,7 @@ onChange={(e) => setSpecialite(e.target.value)}>
   <option value="Pédiatre">Pédiatre</option>
   <option value="Dentiste">Dentiste</option>
   <option value="Ophtalmologue">Ophtalmologue</option>
+  <option value="Orthopédique et Traumatologique">Orthopédique et Traumatologique</option>
   <option value="Ostéopathe">Ostéopathe</option>
   <option value="Gastro-entérologue">Gastro-entérologue</option>
 </select>

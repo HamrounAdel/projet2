@@ -18,8 +18,8 @@ rdvRoutes.get('/getbyDoctor/:doctorId', getDoctorRDV);
 //http://localhost:5003/RDV/deletrdv/:idRdv
 rdvRoutes.delete('/deletrdv/:idRdv/', deletRDV);
 
-//http://localhost:5003/RDV/updatrdv/:idRdv
-rdvRoutes.patch('/updatrdv/:idRdv', updateRDV);
+//http://localhost:5003/RDV/updatrdv/:id
+rdvRoutes.patch('/updatrdv/:id', updateRDV);
 
 //http://localhost:5003/RDV/getunique/:idRdv
 rdvRoutes.get('/getunique/:idRdv',getRdvById)

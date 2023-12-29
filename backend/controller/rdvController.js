@@ -14,7 +14,7 @@ exports.addRDV = async (req, res) => {
           user,
           doctor,
           dateRdv,
-          accepted:false
+          status:"Pending"
       });
 
       await newRdv.save();
@@ -86,7 +86,7 @@ exports.deletRDV = async (req, res) => {
 exports.updateRDV = async (req, res) => {
   try {
       const updatedRdv = await rdvSchema.findOneAndUpdate(
-          { _id: req.params.rdvId},
+          { _id: req.params.id},
           req.body,
           { new: true, useFindAndModify: false }
       );

@@ -5,11 +5,11 @@ const rdvSchema = new mongoose.Schema({
   userId: {  
    type: mongoose.Types.ObjectId,
       ref: 'users', 
-      required: false},
+      required: true},
   doctorId: {  
      type: mongoose.Types.ObjectId, 
      ref: 'doctors',
-      required: false },
+      required: true },
  doctor:{
   type:Object,
   required:false
@@ -24,8 +24,8 @@ const rdvSchema = new mongoose.Schema({
       },
     
       status: {
-        type: Boolean,
-        default: false,
+        type: String,
+        default: "Pending",
       },
 })
 

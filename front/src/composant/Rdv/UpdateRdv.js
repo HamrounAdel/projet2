@@ -1,27 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { useParams,useNavigate,useLocation } from 'react-router-dom';
 import Navigation from '../navbar/Navigation';
+import { useParams,useNavigate,useLocation } from 'react-router-dom';
+import {patchRdv,getRdvByDoctorId} from '../../api/apiRDV'
 const UpdateRdv = () => {
-
-  const auth = useSelector(state => state.User)
   const doct = useSelector(state => state.Doctor)
-  // const  {doctorId} =useParams()
+ const rdv=useSelector(state=>state.RDV)
   const location = useLocation();
 const doctorId = new URLSearchParams(location.search).get('doctorId');
-  const  {idRdv} =useParams()
+console.log('doctorId',doctorId)
+const {id} =useParams()
+ console.log('rdvid',id)
 const navigate = useNavigate()
   const [formData, setFormData] = useState({
-    accepted: false, // Default value, change it according to your data model
+    status: "Pending", // Default value, change it according to your data model
   });
-console.log('formData',formData)
-const fetchReservationData = async () => {
+    console.log('formData',formData)
+
+
+const fetchReservationData = async (doctorId) => {
   try {
-    const response = await axios.get(`http://localhost:5003/RDV/getbyDoctor/${doctorId}`);
-    const { accepted } = response.data;
+    const response = await getRdvByDoctorId(doctorId)
+    
     setFormData({
-      accepted,
+      status : response.status,
     });
   } catch (error) {
     console.log(error)
@@ -29,7 +32,7 @@ const fetchReservationData = async () => {
   }
 };
   useEffect(() => {
-    // Fetch the current reservation data and populate the form
+   
     fetchReservationData();
   }, [doctorId]);
 
@@ -44,10 +47,11 @@ const fetchReservationData = async () => {
     e.preventDefault();
 
     try {
-      const response = await axios.patch(`http://localhost:5003/RDV/updatrdv/${idRdv}`, formData);
+      await patchRdv(id,formData);
 
       // Handle successful response, update UI, etc.
-      console.log('Reservation updated:', response);
+      console.log('Reservation updated:', formData);
+      navigate('/consulter/rdvDoc')
     } catch (error) {
       // Handle error, show error message, etc.
       console.error('Error updating reservation:', error.message);
@@ -62,22 +66,22 @@ const fetchReservationData = async () => {
 
   return (
     <div>
-       <Navigation  auth={auth} logoutdoct={logoutdoct} doct={doct}/>
-      <h2>Update Reservation</h2>
-      <label>{formData.user}
-          </label>
+     <Navigation  doct={doct} logoutdoct={logoutdoct}/>
+     <h2> Update Reservation</h2>
       <form onSubmit={handleSubmit}>
       
         <label>
           Reponse de Rendez-Vous:
           <select
-            checked={formData.accepted}
+          name="status"
+            value={formData.status }
             onChange={handleChange}>
-                 <option value="accepted">accepted</option>
-                 <option value="canceled">canceled</option>
+              <option value="Pending">Pending</option>
+                 <option value="Accepted">accepted</option>
+                 
           </select>
         </label>
-        <button type="submit">Update Reservation</button>
+        <button type="submit" >Update Reservation</button>
       </form>
     </div>
   );

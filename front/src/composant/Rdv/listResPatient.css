@@ -1,0 +1,66 @@
+.MedicalCard__Container {
+    background-color: #0D456D;
+    background-image: linear-gradient(-90deg, #0D456D, #105C90);
+    box-shadow: 0 8px 6px 0 rgba(0, 0, 0, 0.1);
+    width: 100%;
+    border: 1px solid;
+    border-radius: 10px;
+    display: flex;
+    color: white;
+    font-size: 20px;
+    flex-direction: column;
+    padding: 0 15px;
+    padding-top: 18px;
+    padding-bottom: 12px;
+    width: 450px;
+    height: 173px;
+  }
+  .MedicalCard__Row {
+    display: flex;
+    flex: 2;
+  }
+  .MedicalCard__Row:nth-child(2) {
+    flex: 1;
+    border-top: 1px solid black;
+  }
+  .MedicalCard__Title {
+    flex: 2;
+    white-space: nowrap;
+  }
+  .MedicalCard__TimeTo, .MedicalCard__Location, .MedicalCard__Date {
+    flex: 1;
+  }
+  .MedicalCard__Location, .MedicalCard__Date {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .MedicalCard__Title--container {
+    display: flex;
+  }
+  .MedicalCard__Title--wrapper .MedicalCard__Title--title {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .MedicalCard__TimeTo {
+    height: 50px;
+    width: 70px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #FA5252;
+  }
+  .MedicalCard__TimeToto {
+    height: 50px;
+   
+    border-radius: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+   
+  }
+  .grid-containers {
+    display: grid;
+    gap: 24px;
+   
+    grid-template-columns: repeat(2, 1fr)
+  }

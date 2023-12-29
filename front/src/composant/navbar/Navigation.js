@@ -61,7 +61,7 @@ function Navigation({auth,logout,logoutdoct,doct}) {
     
     <ul class="nav-list">
         <li><a ><Link to='/doct'>Acceuil</Link></a></li>
-        <li><a ><Link to={`/doctor/updatRdv?doctorId=${doct._id}`}>consulter les RDVs</Link></a></li>
+        <li><a ><Link to={`/consulter/rdvDoc?doctorId=${doct._id}`}>consulter les RDVs</Link></a></li>
         <li><a ><Link to=''>consulter mes patient</Link></a></li>
         <li className='dropdown'><a >{doct.email}</a> 
          <div className='dropdown-content'>

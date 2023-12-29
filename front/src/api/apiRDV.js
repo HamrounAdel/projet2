@@ -26,8 +26,8 @@ export const  addingRdv=async(userId,doctorId,value)=>{
     
     }
 //update rdv 
-    export const patchRdv=async(idRdv,values)=>{
-        const updatRdv= await axios.patch(`http://localhost:5003/RDV/updatrdv/${idRdv}`,values)
+    export const patchRdv=async(id,values)=>{
+        const updatRdv= await axios.patch(`http://localhost:5003/RDV/updatrdv/${id}`,values)
     }
 
 // delete rdv 

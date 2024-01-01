@@ -73,18 +73,20 @@ function Profile() {
 
   return (
     <div>
-       
-    <div className='bodyprofile '>
-    <Navigation  auth={auth} logout={logout}/> 
-    <div className="container-xl px-4 mt-4">
+      
+       <div className='bodyprofile   '>
+       <Navigation  auth={auth} logout={logout}/> 
+    <div className="container-xl px-4 mt-4  ">
+    
    
   <hr className="mt-0 mb-4" />
   <div>
+
   <div className='Container'>
   {/* <div className="row  "> */}
-    <div className="col-xl-4">
+    <div className="col-xl-4  ">
       {/* Profile picture card*/}
-      <div className="card mb-4 mb-xl-0">
+      <div className="card mb-4 mb-xl-0 ">
         <div className="card-header">Profile Picture</div>
         <div className="card-body text-center">
           {/* Profile picture image*/}
@@ -294,8 +296,10 @@ function Profile() {
   </div>
   </div>
   </div>
+  
   </div>
   </div>
+  
   </div>
 
 

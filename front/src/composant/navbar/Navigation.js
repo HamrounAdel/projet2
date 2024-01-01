@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 function Navigation({auth,logout,logoutdoct,doct}) {
   return (
     <div className='bodynav'>
-    <nav className="nav">
+    <navbar className="navi">
     
     {auth && auth.role === "Admin" ?(<>
       <input type="checkbox" id="nav-check"/>
@@ -78,7 +78,7 @@ function Navigation({auth,logout,logoutdoct,doct}) {
          
    
   
-  </nav>
+  </navbar>
   </div>
   )
 }

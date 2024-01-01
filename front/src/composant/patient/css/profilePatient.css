@@ -22,6 +22,12 @@
     .card-header:first-child {
         border-radius: 0.35rem 0.35rem 0 0;
     }
+    .sticky-profile {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
     .card-header {
         padding: 1rem 1.35rem;
         margin-bottom: 0;

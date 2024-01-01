@@ -1,6 +1,5 @@
 
 import './App.css';
-import Admin from './composant/admin/Admin';
 import RegisterDoctor from './composant/doctor/js/RegisterDoctor';
 import Home from './composant/homepage/Home';
 import {Routes,Route} from 'react-router-dom'
@@ -15,14 +14,15 @@ import LoginDoctor from './composant/doctor/js/LoginDoctor';
 import RouteDoctor from './composant/privateRoute/RouteDoctor';
 import ListRDV from './composant/Rdv/ListRDV';
 import UpdateRdv from './composant/Rdv/UpdateRdv';
-
 import ListRes from './composant/Rdv/ListRes';
 import ListRdvDoc from './composant/Rdv/ListRdvDoc'
+
 function App() {
   return (
     <div >
       
    <Routes>
+     {/* <Route path='/te' element={<Pro/>}/>  */}
     <Route path='/updatRdv/:id' element={<UpdateRdv/>}/>
    <Route path='/rdv/consulter' element={<ListRes/>}/>
    <Route path='/consulter/rdvDoc' element={<ListRdvDoc/>}/>

@@ -1,8 +1,9 @@
 import React,{useEffect} from 'react'
 import './home.css'
-import ListSpecialite from '../homepage/specialite/ListSpecialite';
+
 import { Link } from 'react-router-dom';
-const Pro = () => {
+import Test from './specialite/Test';
+const Home = () => {
     // Sticky Navigation Menu Js
     useEffect(() => {
         // Wrap your code in useEffect to ensure it runs after the component has mounted
@@ -78,7 +79,7 @@ const Pro = () => {
         <div className="logo">
           {/* <img src="https://th.bing.com/th/id/OIP.DH4nETbcth5lFh4T1Gl82gAAAA?rs=1&pid=ImgDetMain" 
           style={{height:'70px',width:'100px'}} /> */}
-          <a href="#">Rendez-vous Medical.</a>
+          <a href="#">MedAppoint.</a>
         </div>
         <ul className="menu">
           <li>
@@ -125,12 +126,17 @@ const Pro = () => {
         <i className="fas fa-bars" />
       </div>
     </nav>
+    <br/>
+    <br/>
     {/* Home Section Start */}
     <section className="home" id="home">
       <div className="home-content">
-        <div className='log'>
-        <h1 > Bienvenue à systéme de rendez-vous medical</h1>
-       </div> 
+      <div className="text">
+
+      <div className="text-one">Bienvenue,</div>
+  <div className="text-three">Systéme de rendez-vous medical</div>
+  </div>
+      
       </div>
     </section>
     {/* About Section Start */}
@@ -144,7 +150,7 @@ const Pro = () => {
             <img src="https://i0.wp.com/auxiliumhealthcare.com/wp-content/uploads/2018/03/medical-conference-P42ZDP5.jpg?fit=2048%2C1367&ssl=1" alt="Portfolio" />
           </div>
           <div className="right1">
-            <div className="topic">Booking </div>
+            <div className="topic">MedAppoint </div>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt,
               porro veritatis pariatur, nobis voluptatem ipsum repellat nemo
@@ -168,14 +174,12 @@ const Pro = () => {
     </section>
     {/* My Skill Section Start */}
     <section className="skills" id="skills">
-      {/* <div className="content"> */}
+      <div className="content">
         <div className="title">
           <span>Listes de specialites</span>
         </div>
-        <div className='pos'>
-        <ListSpecialite/>
-        </div>
-      {/* </div> */}
+        <Test/>
+      </div>
     </section>
     {/* My Services Section Start */}
     <section className="services" id="services">
@@ -248,4 +252,4 @@ const Pro = () => {
   )
 }
 
-export default Pro
+export default Home

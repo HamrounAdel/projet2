@@ -14,7 +14,7 @@ import LoginDoctor from './composant/doctor/js/LoginDoctor';
 import RouteDoctor from './composant/privateRoute/RouteDoctor';
 import ListRDV from './composant/Rdv/ListRDV';
 import UpdateRdv from './composant/Rdv/UpdateRdv';
-import ListRes from './composant/Rdv/ListRes';
+import ListResPat from './composant/Rdv/ListResPat';
 import ListRdvDoc from './composant/Rdv/ListRdvDoc'
 
 
@@ -25,7 +25,7 @@ function App() {
    <Routes>
      {/* <Route path='/te' element={<Test/>}/>  */}
     <Route path='/updatRdv/:id' element={<UpdateRdv/>}/>
-   <Route path='/rdv/consulter' element={<ListRes/>}/>
+   <Route path='/rdv/consulter' element={<ListResPat/>}/>
    <Route path='/consulter/rdvDoc' element={<ListRdvDoc/>}/>
    <Route path='/' element={<Home/>}/>
    <Route path='/auth' element={<RouteUser/>}/>

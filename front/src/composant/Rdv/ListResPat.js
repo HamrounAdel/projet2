@@ -5,7 +5,7 @@ import { getAllRDV , getRdvByUserId} from '../../api/apiRDV'
 import Navigation from '../navbar/Navigation'
 import'./listResPatient.css'
 import { setRDV } from '../../redux/rdvSlice'
-function ListRes() {
+function ListResPat() {
     const auth = useSelector(state => state.User)
     const rdv=useSelector(state=>state.RDV)
     console.log ('reservation',rdv)
@@ -91,4 +91,4 @@ function ListRes() {
   )
 }
 
-export default ListRes
+export default ListResPat

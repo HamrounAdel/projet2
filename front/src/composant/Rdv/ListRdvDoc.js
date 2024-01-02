@@ -5,6 +5,7 @@ import {  getRdvByDoctorId} from '../../api/apiRDV'
 import Navigation from '../navbar/Navigation'
 import {setRDV} from '../../redux/rdvSlice'
 import UpdateRdv from './UpdateRdv'
+import'./listResPatient.css'
 import { FaTrash, FaEdit} from 'react-icons/fa';
 function ListRdvDoc() {
 

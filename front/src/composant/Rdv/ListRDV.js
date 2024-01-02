@@ -39,7 +39,7 @@ console.log('reservations',reservations)
        { 
        (reservations).map((reservation) => (
           <li key={reservation._id}>
-            {reservation.dateRdv} - {reservation.accepted ? true : false}
+          {reservation.user} {reservation.doctor} {reservation.dateRdv} - {reservation.status}
             <button onClick={handleDeleteReservation}>Delete</button>
           </li>
         ))} 

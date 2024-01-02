@@ -44,11 +44,8 @@ function AcceuilPat() {
 console.log('search',search)
   return (
     <div>
-      
-      <div className='log'>
-        <div>
-      <h1 > Trouvez un rendez-vous </h1>
-      <div>
+      <br/><br/>
+       <div className='inp'>
            <input
            type="text"
            placeholder="Search by name"
@@ -84,6 +81,10 @@ console.log('search',search)
          <button onClick={handelShow}>Rechercher </button>
      </div>
     
+      <div className='log'>
+        <div>
+      <h1 > Trouvez un rendez-vous </h1>
+     
     <div>
          {show && (<div className='grid-container'>
            {search.filter((el)=>(el.name.toLowerCase().includes(searchTerm.toLowerCase().trim()))

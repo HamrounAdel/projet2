@@ -47,6 +47,7 @@ function ListResPat() {
     <div>
         <Navigation  auth={auth} logout={logout}/>
        <h2>Reservations</h2>
+       <div className='pos'>
       <ul className='grid-containers'>
         
        { 
@@ -58,7 +59,7 @@ function ListResPat() {
         <div className="MedicalCard__Title--icon">*</div>
         <div className="MedicalCard__Title--wrapper">
           <div className="MedicalCard__Title--title">Nom du medecin:</div>
-          <div className="MedicalCard__Title--subTitle">{reservation.doctor}</div>
+          <div className="MedicalCard__Title--subTitle1">{reservation.doctor}</div>
         
         </div>
       </div>
@@ -87,6 +88,7 @@ function ListResPat() {
          
         ))} 
       </ul>
+      </div>
     </div>
   )
 }

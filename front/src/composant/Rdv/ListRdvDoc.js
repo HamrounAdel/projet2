@@ -63,7 +63,7 @@ const handelEdit =(id)=>{
         <div className="MedicalCard__Title--icon">*</div>
         <div className="MedicalCard__Title--wrapper">
           <div className="MedicalCard__Title--title">Nom du patient:</div>
-          <div className="MedicalCard__Title--subTitle">{reservation.user}</div>
+          <div className="MedicalCard__Title--subTitle1">{reservation.user}</div>
         
         </div>
       </div>
@@ -72,7 +72,7 @@ const handelEdit =(id)=>{
   </div>
   <div className="MedicalCard__Row">
     <div className="MedicalCard__Location">
-      <div className="MedicalCard__Title--subTitle"> Reponse de Rendez-Vous:</div>
+      <div className="MedicalCard__Title--subTitle"> Repondre de Rendez-Vous:</div>
       <div className="MedicalCard__Title--wrapper">
         <div className="MedicalCard__Title--icon" />
         {/* <div className="MedicalCard__Title--title"></div> */}

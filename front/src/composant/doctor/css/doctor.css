@@ -1,7 +1,13 @@
-.bodydoc{margin-top:20px;
+.bodydoc{
+  height: 350px;
+  width: 350px;
+  margin-top:20px;
     background:#eee;
     }
-    
+    .pos1{
+      padding-left: 100px;
+      padding-right: 100px;
+    }
     
     /* CONTACTS */
     .contact-box {
@@ -45,7 +51,7 @@
       display: grid;
       gap: 24px;
      
-      grid-template-columns: repeat(3, 1fr)
+      grid-template-columns: repeat(3, 2fr)
     }
 
     h2{

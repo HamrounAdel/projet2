@@ -43,7 +43,8 @@ function DoctorList() {
     <div >
        <Navigation auth={auth} logout={logout} />
        <h2>Liste des medecines disponible</h2>
-       <hr/>
+      
+       <div className='pos1'>
       <div className='grid-container'> 
      
       {doctors
@@ -51,7 +52,7 @@ function DoctorList() {
       }
     
       </div>
-      
+      </div>
     </div>
   )
 }

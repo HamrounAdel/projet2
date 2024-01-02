@@ -29,9 +29,9 @@ function Doctor({el}) {
             <address className="m-t-md">
               <strong>{el.specialite}</strong>
               <br />
-              {el.adress}
+             Address: {el.address}
               <br />
-              {el.email}
+              Email:{el.email}
               <br />
               <abbr title="Phone">Tel:</abbr> {el.phone}
             </address>

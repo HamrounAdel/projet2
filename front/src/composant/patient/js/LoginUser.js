@@ -22,7 +22,7 @@ function LoginUser() {
   <div className='menu'>
     <ul>
       <li>
-      <a><span  style={{color:'aqua'}}>Rendez-vous Medical</span></a>
+      <a><span  style={{color:'white'}}>MedAppoint.</span></a>
        </li>
     </ul>
       

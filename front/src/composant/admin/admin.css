@@ -47,14 +47,14 @@ h1, h2, h3, h4, h5, h6 {
 .headerhome{
   display: flex;
   justify-content: space-between;
-  background-color: rgb(36, 25, 252);
+  background-color: #36cbf1;
 }
 .menu ul li {
   display: inline-block;
 }
 
 .menu ul li a {
-  color: #0c0b0b;
+  color: #fef8f8;
   text-decoration: none;
   padding: 5px 20px;
   font-family: "poppins", sans-serif;
@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .menu ul li a:hover {
-  color: rgb(153, 139, 255);
+  color: rgb(16, 16, 16);
 }
 
 p {
@@ -168,7 +168,7 @@ h1, .h1 {
   top: 0;
   bottom: 0;
   overflow: auto;
-  background-color: #373193;
+  background-color: #36cbf1;
 }
 
 .dashboard-compact .dashboard-nav {
@@ -206,7 +206,7 @@ h1, .h1 {
 }
 
 .dashboard-nav {
-  background-color: #443ea2;
+  background-color: #36cbf1;
 }
 
 .dashboard-nav a {

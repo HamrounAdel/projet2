@@ -50,7 +50,7 @@ function Admin() {
         <i className="fas fa-bars" />
       </a>
       <a href="#" className="brand-logo">
-        <i className="fas fa-anchor" /> <span>Rendez-vous</span>
+        <i className="fas fa-anchor" /> <span>MedAppoint.</span>
       </a>
     </header>
     <nav className="dashboard-nav-list">

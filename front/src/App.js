@@ -6,7 +6,7 @@ import {Routes,Route} from 'react-router-dom'
 import RouteUser from './composant/privateRoute/RouteUser';
 import AddRdv from './composant/Rdv/AddRdv'; 
 import DoctorList from './composant/doctor/js/DoctorList';
-import ProfilPatient from './composant/patient/js/ProfilPatient';
+
 import ProfilDoctor from './composant/doctor/js/ProfilDoctor';
 import RegisterUser from './composant/patient/js/RegisterUser';
 import LoginUser from './composant/patient/js/LoginUser';
@@ -16,6 +16,8 @@ import ListRDV from './composant/Rdv/ListRDV';
 import UpdateRdv from './composant/Rdv/UpdateRdv';
 import ListResPat from './composant/Rdv/ListResPat';
 import ListRdvDoc from './composant/Rdv/ListRdvDoc'
+import Profil from './composant/patient/js/Profil';
+import DoctProfil from './composant/doctor/js/DoctProfil';
 
 
 function App() {
@@ -23,7 +25,7 @@ function App() {
     <div >
       
    <Routes>
-     {/* <Route path='/te' element={<Test/>}/>  */}
+     {/* <Route path='/te' element={<Profil/>}/>  */}
     <Route path='/updatRdv/:id' element={<UpdateRdv/>}/>
    <Route path='/rdv/consulter' element={<ListResPat/>}/>
    <Route path='/consulter/rdvDoc' element={<ListRdvDoc/>}/>
@@ -39,8 +41,8 @@ function App() {
      <Route path='/doctor/listrdv' element={<ListRDV/>}/>
      <Route path='/doctor/updatRdv' element={<UpdateRdv/>}/>
     <Route path='/patient/rdv'   element={<AddRdv/>}/>
-    <Route path='/patient/monprofile' element={<ProfilPatient/>}/>
-    <Route path='/doctor/monprofile' element={<ProfilDoctor/>}/>
+    <Route path='/patient/monprofile' element={<Profil/>}/>
+    <Route path='/doctor/monprofile' element={<DoctProfil/>}/>
     <Route path='/patient/medecines'  element={<DoctorList/>}/>
     
    </Routes>
